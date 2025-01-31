@@ -1,0 +1,11 @@
+The game has the following attributes:
+1. Speedrunning
+2. RNG Dungeons
+3. A rewind mechanic
+
+Game will give 3 options of weapon class:
+1. Sword
+2. Bow
+3. Staff
+
+Throughout the game, player will kill monsters and earn gold to buy upgrades, finishing rooms as fast as possible. 
