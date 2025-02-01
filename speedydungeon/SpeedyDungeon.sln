@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedyDungeon", "SpeedyDungeon.csproj", "{EDA68D11-B3CD-4E16-B2FF-72FA95F3C93E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDA68D11-B3CD-4E16-B2FF-72FA95F3C93E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDA68D11-B3CD-4E16-B2FF-72FA95F3C93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDA68D11-B3CD-4E16-B2FF-72FA95F3C93E}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{EDA68D11-B3CD-4E16-B2FF-72FA95F3C93E}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{EDA68D11-B3CD-4E16-B2FF-72FA95F3C93E}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{EDA68D11-B3CD-4E16-B2FF-72FA95F3C93E}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal
