@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
 
-@export var health: Health
-=======
+ @export var health: Health
 func _ready():
 	pass
 
