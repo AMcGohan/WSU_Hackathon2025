@@ -9,6 +9,8 @@ func Enter():
 	player = get_tree().get_first_node_in_group("Player")
 	
 func Physics_Update(delta: float):
+	if Input.is_action_just_pressed("rewind"):
+		Transitioned.emit(self, "Rewind")
 	var direction = player.global_position - enemy.global_position
 	
 	if direction.length() > 25:

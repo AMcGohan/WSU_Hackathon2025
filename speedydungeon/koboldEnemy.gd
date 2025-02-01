@@ -1,8 +1,13 @@
-extends Rewind
+extends CharacterBody2D
 class_name KoboldEnemy
 
-var health:= 50.0
-var attack:= 10.0
+@export var health: Health
+
+func _ready():
+	health.health_depleted.connect(_on_health_depleted)
+
+func _on_health_depleted():
+	queue_free() 
 
 func _physics_process(delta):
 	move_and_slide()

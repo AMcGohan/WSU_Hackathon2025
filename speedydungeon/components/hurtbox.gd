@@ -8,8 +8,10 @@ signal received_damage(damage: int)
 func _ready():
 	connect("area_entered", _on_area_entered)
 
-func _on_area_entered(hitbox:HitBox) -> void:
-	if hitbox == null:
-		health.health -= hitbox.damage
+func _on_area_entered(hitbox: HitBox) -> void:
+	if hitbox != null:  # Check if hitbox is not null
+		health.take_damage(hitbox.damage)
 		received_damage.emit(hitbox.damage)
-	
+		if health.health <= 0:
+			health.health = 0
+			queue_free()  # Despawn the enemy when health reaches 0

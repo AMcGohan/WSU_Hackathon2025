@@ -6,5 +6,3 @@ func _process(delta: float) -> void:
 
 func rewind() -> void:
 	$Player.rewind()
-	for kobold in get_tree().get_nodes_in_group("kobolds"):
-		kobold.rewind()

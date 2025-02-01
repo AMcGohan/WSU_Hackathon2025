@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://2xyaqpgvytop"]
+[gd_scene load_steps=15 format=3 uid="uid://2xyaqpgvytop"]
 
 [ext_resource type="Script" path="res://koboldEnemy.gd" id="1_6w2ix"]
 [ext_resource type="Texture2D" uid="uid://cm7yd1aacaatg" path="res://icon.svg" id="2_qd3jx"]
-[ext_resource type="Script" path="res://state_machine.gd" id="2_r0jfb"]
+[ext_resource type="Script" path="res://states/state_machine.gd" id="2_r0jfb"]
 [ext_resource type="Script" path="res://states/EnemyIdle.gd" id="3_ceel0"]
+[ext_resource type="Script" path="res://states/Rewind.gd" id="3_cj7k5"]
 [ext_resource type="Script" path="res://states/EnemyFollow.gd" id="4_rcoux"]
 [ext_resource type="Script" path="res://components/hurtbox.gd" id="6_mtjpb"]
 [ext_resource type="Script" path="res://components/hitbox.gd" id="7_032d6"]
@@ -26,8 +27,9 @@ size = Vector2(128, 129)
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvigi"]
 radius = 91.022
 
-[node name="Kobold" type="CharacterBody2D"]
+[node name="Kobold" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_6w2ix")
+health = NodePath("HurtBox/Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.554747, 7.46027e-07, 0.324351, 1)
@@ -54,8 +56,10 @@ enemy = NodePath("../..")
 script = ExtResource("4_rcoux")
 enemy = NodePath("../..")
 
+[node name="EnemyRewind" type="Node" parent="State Machine"]
+script = ExtResource("3_cj7k5")
+
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
-collision_mask = 0
 script = ExtResource("6_mtjpb")
 health = NodePath("Health")
 

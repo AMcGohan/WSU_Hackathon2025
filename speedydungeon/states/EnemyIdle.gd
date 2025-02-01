@@ -24,6 +24,8 @@ func Update(delta: float):
 		randomize_wander()
 
 func Physics_Update(delta: float):
+	if Input.is_action_just_pressed("rewind"):
+		Transitioned.emit(self, "Rewind")
 	if enemy:
 		enemy.velocity = move_direction * move_speed
 		
