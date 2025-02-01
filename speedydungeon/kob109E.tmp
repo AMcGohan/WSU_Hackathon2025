@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://2xyaqpgvytop"]
+
+[ext_resource type="Script" path="res://koboldEnemy.gd" id="1_6w2ix"]
+[ext_resource type="Texture2D" uid="uid://cm7yd1aacaatg" path="res://icon.svg" id="2_qd3jx"]
+[ext_resource type="Script" path="res://state_machine.gd" id="2_r0jfb"]
+[ext_resource type="Script" path="res://states/EnemyIdle.gd" id="3_ceel0"]
+[ext_resource type="Script" path="res://states/EnemyFollow.gd" id="4_rcoux"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2nor"]
+size = Vector2(129, 129)
+
+[sub_resource type="Animation" id="Animation_s6k3f"]
+resource_name = "run"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ce1w"]
+_data = {
+"run": SubResource("Animation_s6k3f")
+}
+
+[node name="Kobold" type="CharacterBody2D"]
+script = ExtResource("1_6w2ix")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.554747, 7.46027e-07, 0.324351, 1)
+texture = ExtResource("2_qd3jx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_i2nor")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4ce1w")
+}
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_r0jfb")
+initial_state = NodePath("EnemyIdle")
+
+[node name="EnemyIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("3_ceel0")
+enemy = NodePath("../..")
+
+[node name="EnemyFollow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_rcoux")
+enemy = NodePath("../..")

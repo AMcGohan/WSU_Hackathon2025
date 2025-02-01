@@ -9,3 +9,4 @@ func _process(delta: float) -> void:
 	
 func rewind() -> void:
 	$Player.rewind()
+	$Kobold.rewind()
