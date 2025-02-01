@@ -122,8 +122,7 @@ position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_5k64t")
 
 [node name="HitBox2" type="Area2D" parent="."]
-collision_layer = 255
-collision_mask = 255
+collision_layer = 0
 script = ExtResource("3_unib1")
 damage = 100000
 
