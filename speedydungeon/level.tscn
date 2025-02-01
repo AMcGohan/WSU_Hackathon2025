@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj38gb1ydfbmu"]
+[gd_scene load_steps=4 format=3 uid="uid://dj38gb1ydfbmu"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_5i88j"]
 [ext_resource type="PackedScene" uid="uid://dyv6x3a3o64ir" path="res://player.tscn" id="1_tr1tw"]
 [ext_resource type="Texture2D" uid="uid://w2p6clmds15u" path="res://Tree_Bark.jpg" id="2_dnsqb"]
 
-[node name="Level" type="Node2D"]
+[node name="Main" type="Node2D"]
+script = ExtResource("1_5i88j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(577.5, 324.5)
 scale = Vector2(2.24023, 1.26367)
 texture = ExtResource("2_dnsqb")
 
-[node name="player" parent="." instance=ExtResource("1_tr1tw")]
+[node name="Player" parent="." instance=ExtResource("1_tr1tw")]
 position = Vector2(133, 100)
