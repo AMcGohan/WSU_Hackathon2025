@@ -3,6 +3,17 @@ extends Node2D
 @export var FLOOR_TILE_ID : int = 0  # 0 is floor tiles
 @export var player_scene: PackedScene  # Exposes a field in Inspector
 
+func generate_level():
+	# Clear the existing level (if any)
+	$TileMap.clear()
+	
+	# Example: Generate a simple floor
+	for x in range(10):  # Adjust the range for your level size
+		for y in range(10):
+			$TileMap.set_cell(0, Vector2i(x, y), FLOOR_TILE_ID, Vector2i(0, 0))
+	
+	print("Level generated!")
+	
 func get_valid_floor_positions():
 	var tilemap = $TileMap  # Make sure your level has a TileMap node
 	var floor_tiles = []
