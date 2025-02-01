@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4bdjt7uc8fnh"]
+[gd_scene load_steps=5 format=3 uid="uid://d4bdjt7uc8fnh"]
 
 [ext_resource type="PackedScene" uid="uid://y7sy4uul7krb" path="res://LevelGeneration.tscn" id="1_4uihy"]
 [ext_resource type="Script" path="res://Main.gd" id="1_omi7f"]
 [ext_resource type="PackedScene" uid="uid://dyv6x3a3o64ir" path="res://player.tscn" id="3_nt3my"]
+[ext_resource type="Script" path="res://global.gd" id="4_j4qwh"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("level_generation")]
 script = ExtResource("1_omi7f")
@@ -11,5 +12,47 @@ player_scene = ExtResource("3_nt3my")
 
 [node name="LevelGeneration" parent="." instance=ExtResource("1_4uihy")]
 
-[node name="CharacterBody2D" parent="LevelGeneration" instance=ExtResource("3_nt3my")]
-position = Vector2(-34, -24)
+[node name="Global" type="Node" parent="."]
+script = ExtResource("4_j4qwh")
+
+[node name="PauseMenu" type="Control" parent="Global"]
+visible = false
+layout_mode = 3
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Global/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="Global/PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="PauseLabel" type="Label" parent="Global/PauseMenu/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="Global/PauseMenu/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Settings" type="Button" parent="Global/PauseMenu/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Exit" type="Button" parent="Global/PauseMenu/VBoxContainer"]
+layout_mode = 2
+text = "Exit"

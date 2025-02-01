@@ -27,11 +27,11 @@ func loadPrevScene() -> void:
 
 # Menu functions
 func pause() -> void:
-	$/root/Level/player/PauseMenu.show()
+	$/root/Main/Global/PauseMenu.show()
 	get_tree().paused = true
 	pass
 
 func _on_resume_pressed() -> void:
-	$/root/Level/player/PauseMenu.hide()
+	$/root/Main/Global/PauseMenu.hide()
 	get_tree().paused = false
 	pass # Replace with function body.

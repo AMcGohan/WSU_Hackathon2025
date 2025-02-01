@@ -1,7 +1,7 @@
 extends Control
 
 # Load next level
-var nextScene = preload("res://level.tscn")
+var nextScene = preload("res://Main.tscn")
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
