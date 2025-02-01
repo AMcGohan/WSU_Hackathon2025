@@ -11,15 +11,8 @@ config_version=5
 [application]
 
 config/name="SpeedyDungeon"
-<<<<<<< HEAD
 run/main_scene="res://Main.tscn"
-=======
 
-run/main_scene="res://level.tscn"
-=======
-run/main_scene="res://UI/menu.tscn"
-
->>>>>>> 8bdaa9118611b64c83486eefd58236d926010527
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -33,11 +26,7 @@ project/assembly_name="SpeedyDungeon"
 
 [editor_plugins]
 
-<<<<<<< HEAD
 enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg")
-=======
-enabled=PackedStringArray("res://addons/gaea/plugin.cfg")
->>>>>>> 8bdaa9118611b64c83486eefd58236d926010527
 
 [input]
 
