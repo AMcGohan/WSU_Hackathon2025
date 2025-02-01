@@ -93,12 +93,13 @@ _data = {
 size = Vector2(82, 110)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1fyv"]
-size = Vector2(319, 106)
+size = Vector2(212.25, 98.5)
 
 [node name="Sword" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 0)
+scale = Vector2(1, 1.25)
 texture = ExtResource("1_r7tyx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -108,8 +109,8 @@ libraries = {
 speed_scale = 3.0
 
 [node name="arc" type="Sprite2D" parent="."]
-position = Vector2(2, -71)
-scale = Vector2(2, 2)
+position = Vector2(2, -78)
+scale = Vector2(1.25, 1.3375)
 texture = ExtResource("2_i8kc1")
 
 [node name="HitBox" type="Area2D" parent="."]
@@ -125,5 +126,5 @@ script = ExtResource("3_unib1")
 damage = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2"]
-position = Vector2(2.5, -141)
+position = Vector2(-3.125, -109.75)
 shape = SubResource("RectangleShape2D_v1fyv")

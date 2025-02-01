@@ -1,9 +1,7 @@
 extends CharacterBody2D
 
 
- @export var health: Health
-func _ready():
-	pass
+@export var health: Health
 
 const SPEED = 1000.0
 const ACCEL = 5.0
