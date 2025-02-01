@@ -3,17 +3,19 @@
 
 extends Node
 
-var prevScene = ''
+var prevScene = '' 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_key_pressed(KEY_ESCAPE):
+		pause()
 	pass
 
+# Inter scene functions
 # Saves previous scene, for loadPrevScene can load it
 func savePrevScene(scene) -> void:
 	prevScene = scene
@@ -22,3 +24,14 @@ func savePrevScene(scene) -> void:
 func loadPrevScene() -> void:
 	get_tree().change_scene_to_file(prevScene) # Load scene
 	pass
+
+# Menu functions
+func pause() -> void:
+	$/root/Level/player/PauseMenu.show()
+	get_tree().paused = true
+	pass
+
+func _on_resume_pressed() -> void:
+	$/root/Level/player/PauseMenu.hide()
+	get_tree().paused = false
+	pass # Replace with function body.
