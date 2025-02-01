@@ -11,9 +11,21 @@ config_version=5
 [application]
 
 config/name="SpeedyDungeon"
+<<<<<<< HEAD
 run/main_scene="res://Main.tscn"
+=======
+
+run/main_scene="res://level.tscn"
+=======
+run/main_scene="res://UI/menu.tscn"
+
+>>>>>>> 8bdaa9118611b64c83486eefd58236d926010527
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://global.gd"
 
 [dotnet]
 
@@ -21,7 +33,11 @@ project/assembly_name="SpeedyDungeon"
 
 [editor_plugins]
 
+<<<<<<< HEAD
 enabled=PackedStringArray("res://addons/gaea/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg")
+=======
+enabled=PackedStringArray("res://addons/gaea/plugin.cfg")
+>>>>>>> 8bdaa9118611b64c83486eefd58236d926010527
 
 [input]
 
@@ -48,5 +64,10 @@ down={
 click={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(259, 6),"global_position":Vector2(268, 52),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+rewind={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
 ]
 }

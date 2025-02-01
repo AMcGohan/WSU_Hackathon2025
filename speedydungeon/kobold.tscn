@@ -1,0 +1,77 @@
+[gd_scene load_steps=15 format=3 uid="uid://2xyaqpgvytop"]
+
+[ext_resource type="Script" path="res://koboldEnemy.gd" id="1_6w2ix"]
+[ext_resource type="Texture2D" uid="uid://cm7yd1aacaatg" path="res://icon.svg" id="2_qd3jx"]
+[ext_resource type="Script" path="res://states/state_machine.gd" id="2_r0jfb"]
+[ext_resource type="Script" path="res://states/EnemyIdle.gd" id="3_ceel0"]
+[ext_resource type="Script" path="res://states/Rewind.gd" id="3_cj7k5"]
+[ext_resource type="Script" path="res://states/EnemyFollow.gd" id="4_rcoux"]
+[ext_resource type="Script" path="res://components/hurtbox.gd" id="6_mtjpb"]
+[ext_resource type="Script" path="res://components/hitbox.gd" id="7_032d6"]
+[ext_resource type="Script" path="res://components/health.gd" id="7_wie0j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2nor"]
+size = Vector2(129, 129)
+
+[sub_resource type="Animation" id="Animation_s6k3f"]
+resource_name = "run"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ce1w"]
+_data = {
+"run": SubResource("Animation_s6k3f")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gdn5"]
+size = Vector2(128, 129)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvigi"]
+radius = 91.022
+
+[node name="Kobold" type="CharacterBody2D" node_paths=PackedStringArray("health")]
+script = ExtResource("1_6w2ix")
+health = NodePath("HurtBox/Health")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.554747, 7.46027e-07, 0.324351, 1)
+texture = ExtResource("2_qd3jx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_i2nor")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4ce1w")
+}
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_r0jfb")
+initial_state = NodePath("EnemyIdle")
+
+[node name="EnemyIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("3_ceel0")
+enemy = NodePath("../..")
+
+[node name="EnemyFollow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_rcoux")
+enemy = NodePath("../..")
+
+[node name="EnemyRewind" type="Node" parent="State Machine"]
+script = ExtResource("3_cj7k5")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("6_mtjpb")
+health = NodePath("Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_1gdn5")
+
+[node name="Health" type="Node" parent="HurtBox"]
+script = ExtResource("7_wie0j")
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("7_032d6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_xvigi")

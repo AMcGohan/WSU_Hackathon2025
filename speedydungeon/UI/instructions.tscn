@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1u3y2vxc2odt"]
+
+[ext_resource type="Script" path="res://UI/instructions.gd" id="1_qycum"]
+[ext_resource type="Script" path="res://global.gd" id="2_jewyf"]
+
+[sub_resource type="Theme" id="Theme_t3h58"]
+
+[node name="Instruction" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qycum")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_t3h58")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+light_mask = 0
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+text = "This game is a simple dungeon crawler where you must survive as many rooms possible. You can exit any time and log back in to load any saved progress. But if you die, you lose it all. Good luck!"
+fit_content = true
+tab_size = 3
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Global" type="Node" parent="."]
+script = ExtResource("2_jewyf")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
