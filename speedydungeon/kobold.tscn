@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://2xyaqpgvytop"]
+[gd_scene load_steps=14 format=3 uid="uid://2xyaqpgvytop"]
 
 [ext_resource type="Script" path="res://koboldEnemy.gd" id="1_6w2ix"]
 [ext_resource type="Texture2D" uid="uid://cm7yd1aacaatg" path="res://icon.svg" id="2_qd3jx"]
 [ext_resource type="Script" path="res://state_machine.gd" id="2_r0jfb"]
 [ext_resource type="Script" path="res://states/EnemyIdle.gd" id="3_ceel0"]
 [ext_resource type="Script" path="res://states/EnemyFollow.gd" id="4_rcoux"]
+[ext_resource type="Script" path="res://components/hurtbox.gd" id="6_mtjpb"]
+[ext_resource type="Script" path="res://components/hitbox.gd" id="7_032d6"]
+[ext_resource type="Script" path="res://components/health.gd" id="7_wie0j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2nor"]
 size = Vector2(129, 129)
@@ -16,6 +19,12 @@ resource_name = "run"
 _data = {
 "run": SubResource("Animation_s6k3f")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gdn5"]
+size = Vector2(128, 129)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvigi"]
+radius = 91.022
 
 [node name="Kobold" type="CharacterBody2D"]
 script = ExtResource("1_6w2ix")
@@ -44,3 +53,22 @@ enemy = NodePath("../..")
 [node name="EnemyFollow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_rcoux")
 enemy = NodePath("../..")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 255
+collision_mask = 0
+script = ExtResource("6_mtjpb")
+health = NodePath("Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_1gdn5")
+
+[node name="Health" type="Node" parent="HurtBox"]
+script = ExtResource("7_wie0j")
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("7_032d6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_xvigi")

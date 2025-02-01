@@ -1,12 +1,6 @@
 extends CharacterBody2D
 
-var health:=100.0
-var damage:=20.0
-
-var speed: float = 600.0
-var dir: Vector2 = Vector2.ZERO
-var accel: float = 10.0
-var friction: float = 8.0
+class_name Rewind
 
 var replay_duration: float = 3.0
 var rewinding: bool = false
@@ -16,26 +10,8 @@ var rewind_values = {
 	"velocity": []
 }
 
-func _ready() -> void:
-	pass
-	
-func _process(delta: float) -> void:
-	if rewinding:
-		return
-	
-	dir.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	dir.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	
-	dir = dir.normalized()
-	if dir.length() > 0:
-		self.velocity = lerp(self.velocity, dir * speed, accel * delta)
-	else:
-		self.velocity = lerp(self.velocity, Vector2.ZERO, friction * delta)
-
-	look_at(get_global_mouse_position())
-
 func _physics_process(delta: float) -> void:
-	move_and_slide()  # No arguments needed in Godot 4
+	move_and_slide()
 
 	if not rewinding:
 		var max_size = replay_duration * Engine.get_physics_ticks_per_second()
@@ -51,11 +27,21 @@ func _physics_process(delta: float) -> void:
 
 func rewind() -> void:
 	rewinding = true
-	$CollisionShape2D.set_deferred("disabled", true)
+	if has_node("CollisionShape2D"):
+		print("Disabling CollisionShape2D for " + str(self))
+		$CollisionShape2D.set_deferred("disabled", true)
+	else:
+		print("No CollisionShape2D for " + str(self))
 
 func compute_rewind(delta: float) -> void:
 	if rewind_values["position"].is_empty():
-		$CollisionShape2D.set_deferred("disabled", false)
+		# Re-enable collision shape after rewinding
+		if has_node("CollisionShape2D"):
+			print("Re-enabling CollisionShape2D for " + str(self))
+			$CollisionShape2D.set_deferred("disabled", false)
+		else:
+			print("No CollisionShape2D for " + str(self))
+
 		rewinding = false
 		return
 

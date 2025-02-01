@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://boj3q3ipmby37"]
+[gd_scene load_steps=9 format=3 uid="uid://boj3q3ipmby37"]
 
 [ext_resource type="Texture2D" uid="uid://bxemh2466ntk8" path="res://sword.png" id="1_r7tyx"]
 [ext_resource type="Texture2D" uid="uid://bo5q3ynvjktlc" path="res://Slash.png" id="2_i8kc1"]
+[ext_resource type="Script" path="res://components/hitbox.gd" id="3_unib1"]
 
 [sub_resource type="Animation" id="Animation_u6w43"]
 resource_name = "swing"
@@ -88,6 +89,12 @@ _data = {
 "swing": SubResource("Animation_u6w43")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5k64t"]
+size = Vector2(82, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1fyv"]
+size = Vector2(319, 106)
+
 [node name="Sword" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -104,3 +111,22 @@ speed_scale = 3.0
 position = Vector2(2, -71)
 scale = Vector2(2, 2)
 texture = ExtResource("2_i8kc1")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("3_unib1")
+damage = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_5k64t")
+
+[node name="HitBox2" type="Area2D" parent="."]
+collision_layer = 255
+collision_mask = 255
+script = ExtResource("3_unib1")
+damage = 100000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2"]
+position = Vector2(2.5, -141)
+shape = SubResource("RectangleShape2D_v1fyv")
