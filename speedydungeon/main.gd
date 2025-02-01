@@ -1,8 +1,22 @@
 extends Node2D
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("rewind"):
-		rewind()
+@export var level_generation: Node2D
+@export var player_scene: PackedScene
 
-func rewind() -> void:
-	$Player.rewind()
+var player: Node2D
+
+func _ready():
+	# Generate the level
+	level_generation.generate_level()
+	
+	# Spawn the player
+	spawn_player()
+
+func spawn_player():
+	var spawn_point = level_generation.get_random_floor_position()
+	if spawn_point != Vector2.ZERO:
+		player = player_scene.instantiate()
+		player.position = spawn_point
+		add_child(player)
+	else:
+		print("Error: No valid spawn point found!")
