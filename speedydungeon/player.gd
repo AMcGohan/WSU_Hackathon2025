@@ -13,15 +13,17 @@ var rewind_values = {
 	"velocity": []
 }
 
-@onready var sword = $Sword  # Reference the sword node
+@onready var sword = $Sword  # Assuming the sword is a child node
 
 func _ready() -> void:
-	pass
+	# Set initial player rotation to be locked (e.g., 0)
+	rotation = 0.0
 	
 func _process(delta: float) -> void:
 	if rewinding:
 		return
 	
+	# Player movement logic
 	dir.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	dir.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	
@@ -31,10 +33,14 @@ func _process(delta: float) -> void:
 	else:
 		self.velocity = lerp(self.velocity, Vector2.ZERO, friction * delta)
 
-	# Remove look_at() from player; let sword handle rotation
+	# Lock the player rotation (still faces the same direction)
+	rotation = 0.0
+	
+	# Sword rotation: make it follow the mouse cursor
+	sword.look_at(get_global_mouse_position())
 
 func _physics_process(delta: float) -> void:
-	move_and_slide()
+	move_and_slide()  # No arguments needed in Godot 4
 
 	if not rewinding:
 		var max_size = replay_duration * Engine.get_physics_ticks_per_second()
