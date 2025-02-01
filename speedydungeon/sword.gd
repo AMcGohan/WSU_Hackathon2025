@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var distance_from_player: float = 25.0  # Adjust distance as needed
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _process(delta: float) -> void:
 	var player = get_parent()
@@ -24,3 +25,11 @@ func _process(delta: float) -> void:
 	else:
 		scale.y = 0.5   # Keep normal
 		scale.x = 0.5
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		swing_sword()
+
+func swing_sword() -> void:
+	if animation_player:
+		animation_player.play("swing")
