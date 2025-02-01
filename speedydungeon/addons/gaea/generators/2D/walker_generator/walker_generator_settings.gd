@@ -16,7 +16,7 @@ enum FullnessCheck { TILE_AMOUNT, PERCENTAGE }  ## Restricts the generation to a
 			constrain_world_size = true
 		notify_property_list_changed()
 ## Maximum amount of floor tiles.
-@export var max_tiles := 150
+@export var max_tiles := 100000
 ## Maximum percentage of the [param world_size] to be filled with floors.
 @export var fullness_percentage := 0.2
 ## Can't be [code]false[/code] if [param Fullness Check] is on [b]Percentage[/b] mode.
