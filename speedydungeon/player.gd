@@ -1,6 +1,14 @@
 extends CharacterBody2D
 
+
 @export var health: Health
+=======
+func _ready():
+	pass
+
+const SPEED = 1000.0
+const ACCEL = 5.0
+
 
 var speed: float = 600.0
 var dir: Vector2 = Vector2.ZERO
