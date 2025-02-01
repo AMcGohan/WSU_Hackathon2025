@@ -9,16 +9,16 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tn4fb"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_o4vi4")
+health = NodePath("Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_lap34")
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
-collision_layer = 8
-collision_mask = 0
+collision_layer = 9
 script = ExtResource("3_fqthh")
 health = NodePath("../Health")
 

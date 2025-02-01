@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
-var health:=100.0
-var damage:=20.0
+@export var health: Health
 
 var speed: float = 600.0
 var dir: Vector2 = Vector2.ZERO
@@ -16,9 +15,14 @@ var rewind_values = {
 	"velocity": []
 }
 
-func _ready() -> void:
-	pass
-	
+
+func _ready():
+	# Connect the health_depleted signal to a function
+	health.health_depleted.connect(_on_player_death)
+
+func _on_player_death():
+	print("Player has died. Closing game...")
+	get_tree().quit()
 func _process(delta: float) -> void:
 	if rewinding:
 		return
