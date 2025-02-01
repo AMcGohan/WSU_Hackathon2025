@@ -23,6 +23,10 @@ Global="*res://global.gd"
 
 project/assembly_name="SpeedyDungeon"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gaea/plugin.cfg")
+
 [input]
 
 left={

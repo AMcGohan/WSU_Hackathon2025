@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+func _ready():
+	pass
+
 const SPEED = 1000.0
 const ACCEL = 5.0
 
