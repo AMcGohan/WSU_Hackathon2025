@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 [gd_scene load_steps=18 format=3 uid="uid://dpbj6a4igeam"]
-=======
-[gd_scene load_steps=18 format=3 uid="uid://y7sy4uul7krb"]
->>>>>>> 8bdaa9118611b64c83486eefd58236d926010527
 
 [ext_resource type="Script" path="res://LevelGeneration.gd" id="1_kicwg"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator.gd" id="2_3cjkc"]
@@ -12,11 +8,7 @@
 [ext_resource type="Script" path="res://addons/gaea/modifiers/2D/walls.gd" id="6_edpo2"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/walker_generator/walker_generator_settings.gd" id="7_ta1qb"]
 [ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="8_jwck6"]
-<<<<<<< HEAD
 [ext_resource type="Texture2D" path="res://environments/environmentArt.png" id="9_55qhb"]
-=======
-[ext_resource type="Texture2D" uid="uid://d074brtkbtvv7" path="res://environments/environmentArt.png" id="9_55qhb"]
->>>>>>> 8bdaa9118611b64c83486eefd58236d926010527
 
 [sub_resource type="Resource" id="Resource_xa2b8"]
 script = ExtResource("5_5tdyw")
