@@ -10,3 +10,4 @@ level_generation = NodePath("LevelGeneration")
 player_scene = ExtResource("3_nt3my")
 
 [node name="LevelGeneration" parent="." instance=ExtResource("1_4uihy")]
+level_width = 100
