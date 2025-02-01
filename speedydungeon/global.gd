@@ -10,7 +10,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_key_pressed(KEY_ESCAPE):
 		pause()
 	pass
@@ -27,11 +27,11 @@ func loadPrevScene() -> void:
 
 # Menu functions
 func pause() -> void:
-	$/root/Main/Global/PauseMenu.show()
+	$/root/Main/player/PauseMenu.show()
 	get_tree().paused = true
 	pass
 
 func _on_resume_pressed() -> void:
-	$/root/Main/Global/PauseMenu.hide()
+	$/root/Main/player/PauseMenu.hide()
 	get_tree().paused = false
 	pass # Replace with function body.
